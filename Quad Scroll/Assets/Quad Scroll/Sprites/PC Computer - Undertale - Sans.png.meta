@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1fff1f94b4f38ab41a1d91a61c070751
-timeCreated: 1510932410
+timeCreated: 1511012018
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -41,16 +41,16 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 3
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 5, y: 1120, z: 323, w: 21}
   spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0.82
   textureType: 8
   textureShape: 1
   maxTextureSizeSet: 0
@@ -82,22 +82,26 @@ TextureImporter:
       name: PC Computer - Undertale - Sans_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1120
-        width: 23
-        height: 30
+        x: 0
+        y: 0
+        width: 351
+        height: 1171
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     outline:
+    - - {x: -170.47006, y: 564.3418}
+      - {x: -170.5, y: 534.5}
+      - {x: -147.5, y: 534.5}
+      - {x: -147.58742, y: 564.4946}
+    physicsShape:
     - - {x: -175.5, y: 585.5}
       - {x: -175.5, y: -585.5}
       - {x: 175.5, y: -585.5}
       - {x: 175.5, y: 585.5}
-    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

@@ -5,5 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level.unity
+    guid: 5e7fc5d6c89c74845a6dc547f3df41d7
+  - enabled: 1
+    path: Assets/QuadScroll.unity
+    guid: 831a4190d2955bc4faefcdfefeedc7e7

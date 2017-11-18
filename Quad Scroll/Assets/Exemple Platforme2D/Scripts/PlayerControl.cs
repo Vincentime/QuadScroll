@@ -28,7 +28,7 @@ public class PlayerControl : MonoBehaviour
 	{
 		// Setting up references.
 		groundCheck = transform.Find("groundCheck");
-		//anim = GetComponent<Animator>();
+		anim = GetComponent<Animator>();
 	}
 
 
@@ -40,19 +40,21 @@ public class PlayerControl : MonoBehaviour
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetButtonDown("Jump") && grounded)
 			jump = true;
-	}
+
+
+    }
 
 
 	void FixedUpdate ()
 	{
 		// Cache the horizontal input.
 		float h = Input.GetAxis("Horizontal");
+        Debug.Log(h);
+        // The Speed animator parameter is set to the absolute value of the horizontal input.
+        //anim.SetFloat("Speed", Mathf.Abs(h));
 
-		// The Speed animator parameter is set to the absolute value of the horizontal input.
-		//anim.SetFloat("Speed", Mathf.Abs(h));
-
-		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
+        // If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
+        if (h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
 			// ... add a force to the player.
 			GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce);
 
@@ -62,13 +64,29 @@ public class PlayerControl : MonoBehaviour
 			GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
 		// If the input is moving the player right and the player is facing left...
-		if(h > 0 && !facingRight)
+		if(h > 0)
+        {
 			// ... flip the player.
-			Flip();
-		// Otherwise if the input is moving the player left and the player is facing right...
-		else if(h < 0 && facingRight)
-			// ... flip the player.
-			Flip();
+            anim.SetTrigger("Right");
+            anim.ResetTrigger("Left");
+            anim.ResetTrigger("Front");
+            //Flip();
+        }
+        // Otherwise if the input is moving the player left and the player is facing right...
+        else if(h < 0)
+        {
+            anim.SetTrigger("Left");
+            anim.ResetTrigger("Front");
+            anim.ResetTrigger("Right");
+            // ... flip the player.
+            //Flip();
+
+        } else
+        {
+            anim.SetTrigger("Front");
+            anim.ResetTrigger("Left");
+            anim.ResetTrigger("Right");
+        }
 
 		// If the player should jump...
 		if(jump)
@@ -83,6 +101,9 @@ public class PlayerControl : MonoBehaviour
 			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			jump = false;
 		}
+
+ 
+
 	}
 	
 	
