@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerControlExemple : MonoBehaviour
 {
 	[HideInInspector]
 	public bool facingRight = true;			// For determining which way the player is currently facing.
@@ -49,7 +49,7 @@ public class PlayerControl : MonoBehaviour
 	{
 		// Cache the horizontal input.
 		float h = Input.GetAxis("Horizontal");
-        Debug.Log(h);
+
         // The Speed animator parameter is set to the absolute value of the horizontal input.
         //anim.SetFloat("Speed", Mathf.Abs(h));
 
