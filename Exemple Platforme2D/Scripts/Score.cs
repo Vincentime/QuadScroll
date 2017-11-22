@@ -6,14 +6,14 @@ public class Score : MonoBehaviour
 	public int score = 0;					// The player's score.
 
 
-	private PlayerControlExemple playerControl;	// Reference to the player control script.
+	private PlayerControlQS playerControl;	// Reference to the player control script.
 	private int previousScore = 0;			// The score in the previous frame.
 
 
 	void Awake ()
 	{
 		// Setting up the reference.
-		playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControlExemple>();
+		playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControlQS>();
 	}
 
 

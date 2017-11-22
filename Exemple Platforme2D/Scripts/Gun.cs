@@ -7,7 +7,7 @@ public class Gun : MonoBehaviour
 	public float speed = 20f;				// The speed the rocket will fire at.
 
 
-	private PlayerControlExemple playerCtrl;		// Reference to the PlayerControl script.
+	private PlayerControlQS playerCtrl;		// Reference to the PlayerControl script.
 	private Animator anim;					// Reference to the Animator component.
 
 
@@ -15,7 +15,7 @@ public class Gun : MonoBehaviour
 	{
 		// Setting up the references.
 		anim = transform.root.gameObject.GetComponent<Animator>();
-		playerCtrl = transform.root.GetComponent<PlayerControlExemple>();
+		playerCtrl = transform.root.GetComponent<PlayerControlQS>();
 	}
 
 

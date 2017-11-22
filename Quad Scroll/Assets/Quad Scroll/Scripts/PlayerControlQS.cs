@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerControlExemple : MonoBehaviour
+public class PlayerControlQS : MonoBehaviour
 {
 	[HideInInspector]
 	public bool facingRight = true;			// For determining which way the player is currently facing.
@@ -24,28 +24,29 @@ public class PlayerControlExemple : MonoBehaviour
 	private Animator anim;					// Reference to the player's animator component.
 
 
-	void Awake()
+    void Awake()
 	{
 		// Setting up references.
 		groundCheck = transform.Find("groundCheck");
 		anim = GetComponent<Animator>();
-	}
+
+    }
 
 
 	void Update()
 	{
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
-		grounded = GetComponent<Collider2D>().IsTouchingLayers(LayerMask.GetMask("Ground"));  
+		grounded = GetComponent<Collider2D>().IsTouchingLayers(LayerMask.GetMask("Ground"));
+        
 
-		// If the jump button is pressed and the player is grounded then the player should jump.
-		if(Input.GetButtonDown("Jump") && grounded)
+        // If the jump button is pressed and the player is grounded then the player should jump.
+        if (Input.GetButtonDown("Jump") && grounded)
 			jump = true;
 
 
     }
 
-
-	void FixedUpdate ()
+    void FixedUpdate ()
 	{
 		// Cache the horizontal input.
 		float h = Input.GetAxis("Horizontal");
@@ -62,6 +63,8 @@ public class PlayerControlExemple : MonoBehaviour
 		if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
 			// ... set the player's velocity to the maxSpeed in the x axis.
 			GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+
+
 
 		// If the input is moving the player right and the player is facing left...
 		if(h > 0)
