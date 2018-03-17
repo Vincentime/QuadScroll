@@ -5,14 +5,13 @@ using UnityEngine;
 public class MainScript : MonoBehaviour
 {
     private const float hauteurSection = 17.5f;
-    public GameObject goSection;
 
-    public List<GameObject> listSection;
+    private List<GameObject> listSection;
 
     public int nbSection = 5;
     private int sectionActuel = 0;
 
-    public Transform target;
+    private Transform target;
     public float speedSection;
     public float speedPlayer;
 
@@ -25,7 +24,8 @@ public class MainScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //GameObject[] listSection = Resources.FindObjectsOfTypeAll<GameObject>();
+
+        Screen.SetResolution(1280, 720, false);
         GameObject[] listSection = Resources.LoadAll<GameObject>("Section");
 
         player = GameObject.Find("PlayerTest").GetComponent<Rigidbody2D>();
