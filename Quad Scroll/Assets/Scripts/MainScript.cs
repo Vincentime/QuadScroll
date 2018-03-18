@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainScript : MonoBehaviour
 {
-    private const float hauteurSection = 17.5f;
+    private const float hauteurSection = 0.32f * 70f;
 
     private List<GameObject> listSection;
 
@@ -19,7 +19,6 @@ public class MainScript : MonoBehaviour
     private Vector3 targetPosition;
     private Rigidbody2D player;
     private Vector3 targetDebutSection;
-    private float startTime;
 
     // Use this for initialization
     void Start()
@@ -35,7 +34,7 @@ public class MainScript : MonoBehaviour
             GameObject section = GameObject.Instantiate(listSection[rand], this.transform);
             section.name = "Section" + i;
             section.transform.position = this.transform.position;
-            section.transform.position += Vector3.up * hauteurSection * i;
+            section.transform.position += Vector3.up * (hauteurSection + 0.1f) * i;
         }
 
     }
@@ -47,13 +46,13 @@ public class MainScript : MonoBehaviour
 
         if (moveToNextSection)
         {
-            if (Vector3.Distance(player.position, targetDebutSection) > .25f)
+            if (Vector3.Distance(player.position, targetDebutSection) > .001f)
             {
                  float step = speedPlayer * Time.deltaTime;
                 player.transform.position = Vector3.MoveTowards(player.position, targetDebutSection, step);
             }
 
-            if (Vector3.Distance(transform.position, targetPosition) > .25f)
+            if (Vector3.Distance(transform.position, targetPosition) > .001f)
             {
                 float step = speedSection * Time.deltaTime;
                 this.transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
@@ -73,14 +72,13 @@ public class MainScript : MonoBehaviour
 
     public void prochaineSection()
     {
-        targetPosition = transform.position + Vector3.down * hauteurSection;
+        targetPosition = transform.position + Vector3.down * (hauteurSection + 0.1f);
         string chemin = "Section" + sectionActuel + "/DebutSection";
         GameObject debutSectionSuivante = GameObject.Find(chemin);
         targetDebutSection = debutSectionSuivante.transform.position;
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         Physics2D.IgnoreLayerCollision(9, 8, true);
         moveToNextSection = true;
-        startTime = Time.time;
         sectionActuel++;
         Debug.Log("prochaine section");
     }
